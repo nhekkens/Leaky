@@ -5,20 +5,110 @@
             <br>
             <div class="col-lg-3" v-for="(game, index)  in games">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Game#
+                    <div class="panel-heading">Game
                         <span class="badge pull-right">{{ index }}</span>
                     </div>
                     <div class="panel-body">
-                        <kbd> </kbd> People
-                        <kbd></kbd> Kids
-                        <br>
-                        <br>
-                        <kbd></kbd>
-                        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(game, game._id)">Delete</button>
+                         <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Stats</th>
+                                        <th style="text-align: center;">Slapy</th>
+                                        <th style="text-align: center;">Alex</th>
+                                        <th style="text-align: center;">Inev</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Kills</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Kills}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Kills}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Kills}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Leaks</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Leaks}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Leaks}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Leaks}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Infuse</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Infuse}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Infuse}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Infuse}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Income</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Income}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Income}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Income}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Gas</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Gas}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Gas}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Gas}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Value</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.Value}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.Value}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.Value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">FirstLeak</td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Slapy.FirstLeak}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Alex.FirstLeak}}
+                                        </td>
+                                        <td style="text-align: center; padding-top: 14px;">
+                                            {{game.Inev.FirstLeak}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                     </div>
                     <div class="panel-footer">
                         <h4>
-                            Inev is a noob
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(game, game._id)">Delete</button>
                         </h4>
                     </div>
                 </div>
@@ -96,7 +186,7 @@
                 this.test_id = id1;
             },
             deleteData(roomDetails, id) {
-                axios.delete('http://localhost:3000/games/' + id).then(
+                axios.delete('https://leaky-73c95.firebaseio.com/games/' + id).then(
                     response => this.roomDetails.splice(index, 1)
                 );
                 window.location.reload();

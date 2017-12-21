@@ -163,7 +163,6 @@ import axios from 'axios'
 export default {
     data() {
         return {
-
             Game: {
                 Slapy: {
                     Kills: 0,
@@ -190,7 +189,7 @@ export default {
                     Income: 0,
                     Gas: 0,
                     Value: 0,
-                    FirstLeak: 1
+                    FirstLeak: 0
                 }
             }
         }
@@ -203,7 +202,7 @@ export default {
 
             console.log(newGame);
 
-            axios.post('https://leaky-73c95.firebaseio.com/games', newGame).then((response) => {
+            axios.post('https://leaky-73c95.firebaseio.com/games/', newGame).then((response) => {
                 console.log(response);
                 // window.location.reload();
             }).catch((error) => {
