@@ -14,66 +14,142 @@
                     <div class="modal-body">
     
                         <form>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">Full Name</label>
-    
-                                <input type="text" class="form-control" placeholder="e.g. John Smith" v-model="Game.full_name">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">Checkout</label>
-    
-                                <input type="text" class="form-control" placeholder="e.g. August 22, 2017" v-model="Game.time">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">How Many People</label>
-    
-                                <select class="form-control" id="exampleFormControlSelect1" v-model="Game.people">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">How many kids</label>
-    
-                                <select class="form-control" id="exampleFormControlSelect1" v-model="Game.kids">
-                                    <option>0</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">Game Type</label>
-    
-                                <input type="text" class="form-control" placeholder="Suit" v-model="Game.room_type">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="formGroupExampleInput">Game Number</label>
-    
-                                <select class="form-control" id="exampleFormControlSelect1"v-model="Game.room_number">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary" @click="addToAPI">Book</button>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Player</th>
+                                        <th style="text-align: center;">Kills</th>
+                                        <th style="text-align: center;">Leaks</th>
+                                        <th style="text-align: center;">Infuse</th>
+                                        <th style="text-align: center;">Income</th>
+                                        <th style="text-align: center;">Gas</th>
+                                        <th style="text-align: center;">Value</th>
+                                        <th style="width: 90px; text-align: center;">First Leak</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Slapy</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Kills">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Leaks">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Infuse">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Income">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Gas">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Slapy.Value">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Slapy.FirstLeak">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Alex</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Kills">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Leaks">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Infuse">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Income">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Gas">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Alex.Value">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Alex.FirstLeak">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 14px;">Inev</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Kills">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Leaks">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Infuse">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Income">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Gas">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" v-model="Game.Inev.Value">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Inev.FirstLeak">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                           
+                            <button type="submit" class="btn btn-primary" @click="addToAPI">Save</button>
                         </form>
                     </div>
-                    <div class="modal-footer">
-    
-                    </div>
+                    <div class="modal-footer"></div>
                 </div>
             </div>
         </div>
@@ -89,13 +165,33 @@ export default {
         return {
 
             Game: {
-                full_name: '',
-                time: '',
-                people: '',
-                kids: '',
-                room_type: '',
-                room_number: ''
-
+                Slapy: {
+                    Kills: 0,
+                    Leaks: 0,
+                    Infuse: 0,
+                    Income: 0,
+                    Gas: 0,
+                    Value: 0,
+                    FirstLeak: 0
+                },
+                Alex: {
+                    Kills: 0,
+                    Leaks: 0,
+                    Infuse: 0,
+                    Income: 0,
+                    Gas: 0,
+                    Value: 0,
+                    FirstLeak: 0
+                },
+                Inev: {
+                    Kills: 0,
+                    Leaks: 0,
+                    Infuse: 0,
+                    Income: 0,
+                    Gas: 0,
+                    Value: 0,
+                    FirstLeak: 1
+                }
             }
         }
     },
@@ -103,19 +199,13 @@ export default {
 
         addToAPI() {
 
-            let newGame = {
-                full_name: this.Game.full_name,
-                time: this.Game.time,
-                people: this.Game.people,
-                kids: this.Game.kids,
-                room_type: this.Game.room_type,
-                room_number: this.Game.room_number
-            }
+            let newGame = this.Game;
+
             console.log(newGame);
 
-            axios.post('http://localhost:3000/games', newGame).then((response) => {
+            axios.post('https://leaky-73c95.firebaseio.com/games', newGame).then((response) => {
                 console.log(response);
-                window.location.reload();
+                // window.location.reload();
             }).catch((error) => {
                 console.log(error);
             })
@@ -125,5 +215,11 @@ export default {
 </script>
 
 <style>
+    .form-group {
+        margin: 0;
+    }
 
+    .toggle.btn {
+        min-width: 80px;
+    }
 </style>

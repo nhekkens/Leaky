@@ -3,18 +3,18 @@
         <navBar></navBar>
         <div class="container">
             <br>
-            <div class="col-lg-3" v-for="room  in roomDetails">
+            <div class="col-lg-3" v-for="(game, index)  in games">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">{{ room.full_name }}
-                        <span class="badge pull-right">{{ room.room_number }}</span>
+                    <div class="panel-heading">Game#
+                        <span class="badge pull-right">{{ index }}</span>
                     </div>
                     <div class="panel-body">
-                        <kbd>{{ room.people }} </kbd> People
-                        <kbd> {{ room.kids }}</kbd> Kids
+                        <kbd> </kbd> People
+                        <kbd></kbd> Kids
                         <br>
                         <br>
-                        <kbd>{{ room.room_type }}</kbd>
-                        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(room, room._id)">Delete</button>
+                        <kbd></kbd>
+                        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(game, game._id)">Delete</button>
                     </div>
                     <div class="panel-footer">
                         <h4>
@@ -34,7 +34,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            Are you sure you want to delete this room?
+                            Are you sure you want to delete this game?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -43,7 +43,6 @@
                     </div>
                 </div>
             </div>
-            <!-- @click="deleteData(room, room._id)" -->
         </div>
     </div>
 </template>
@@ -64,7 +63,8 @@
                 user: {},
                 roomDetails: [],
                 test_room: {},
-                test_id: ''
+                test_id: '',
+                games: []
             }
         },
         created() {
@@ -79,8 +79,8 @@
                 }
             });
 
-            axios.get('http://localhost:3000/games').then((response) => {
-                this.roomDetails = response.data;
+            axios.get('https://leaky-73c95.firebaseio.com/games' + vm.userId + '.json').then((response) => {
+                this.games = response.data;
                 console.log(response);
             }).catch((error) => {
                 console.log(error);

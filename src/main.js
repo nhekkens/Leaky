@@ -9,17 +9,17 @@ Vue.use(VueRouter)
 
 
 new Vue({
-  router,
-  created() {
-    firebase.initializeApp(config);
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
-        this.$router.push('/success')
-      } else {
-        this.$router.push('/auth')
-      }
-     });
+    router,
+    created() {
+        firebase.initializeApp(config);
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user) {
+                this.$router.push('/games')
+            } else {
+                this.$router.push('/auth')
+            }
+        });
     },
-  el: '#app',
-  render: h => h(App)
+    el: '#app',
+    render: h => h(App)
 });

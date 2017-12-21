@@ -14,7 +14,7 @@
         name: 'auth',
         mounted() {
         var uiConfig = {
-                signInSuccessUrl: '/success',
+                signInSuccessUrl: '/games',
                 signInOptions: [
                     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
                     firebase.auth.EmailAuthProvider.PROVIDER_ID
