@@ -21,10 +21,8 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li role="presentation" >
-						<a href="#">
-							<AddGame></AddGame>
-						</a>
+					<li role="presentation">
+						<AddGame></AddGame>
 					</li>
 					<li class="ok">
 						<span class="badge badge-primary" style="margin-top: 2px;">

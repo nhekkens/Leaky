@@ -1,14 +1,15 @@
 import VueRouter from 'vue-router';
-import Auth from './components/Auth.vue';
-import AuthSuccess from './components/AuthSuccess.vue';
+import Login from './components/Login.vue';
+import Homescreen from './components/Homescreen.vue';
 import AddGame from './components/addGame.vue'
 
 
 const router = new VueRouter({
+	mode: 'history',
 	routes: [
-		{ path: '/', component: Auth },
-		{ path: '/auth', component: Auth },
-		{ path: '/games', component: AuthSuccess },
+		{ path: '/', component: Login },
+		{ path: '/auth', component: Login },
+		{ path: '/games', component: Homescreen },
 		{ path: '/addgame', component: AddGame }
 	]
 });

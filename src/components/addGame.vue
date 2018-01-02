@@ -1,8 +1,10 @@
 <template>
     <div>
-       <li role="presentation" data-toggle="modal" data-target=".bd-example-modal-lg" ><a href="#">Add a Game</a></li>
+        <li role="presentation" data-toggle="modal" data-target=".addGameModal" >
+            <a style="padding: 15px; display: block; line-height: 20px;" href="#">Add a Game</a>
+        </li>
         <!-- Large modal -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade addGameModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -25,6 +27,7 @@
                                         <th style="text-align: center;">Income</th>
                                         <th style="text-align: center;">Gas</th>
                                         <th style="text-align: center;">Value</th>
+                                        <th style="width: 90px; text-align: center;">Leaked</th>
                                         <th style="width: 90px; text-align: center;">First Leak</th>
                                     </tr>
                                 </thead>
@@ -59,6 +62,11 @@
                                         <td>
                                             <div class="form-group">
                                                 <input type="number" class="form-control" v-model="Game.Slapy.Value">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Slapy.Leaked">
                                             </div>
                                         </td>
                                         <td>
@@ -101,6 +109,11 @@
                                         </td>
                                         <td>
                                             <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Alex.Leaked">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
                                                 <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Alex.FirstLeak">
                                             </div>
                                         </td>
@@ -139,6 +152,11 @@
                                         </td>
                                         <td>
                                             <div class="form-group" style="text-align: center; margin-top:6px;">
+                                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Inev.Leaked">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align: center; margin-top:6px;">
                                                 <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" value="1" v-bind:true-value="1" v-bind:false-value="0" data-on="Leaker" data-off="Winner" v-model="Game.Inev.FirstLeak">
                                             </div>
                                         </td>
@@ -153,7 +171,6 @@
                 </div>
             </div>
         </div>
-    
     </div>
 </template>
 
@@ -171,6 +188,7 @@ export default {
                     Income: 0,
                     Gas: 0,
                     Value: 0,
+                    Leaked: 0,
                     FirstLeak: 0
                 },
                 Alex: {
@@ -180,6 +198,7 @@ export default {
                     Income: 0,
                     Gas: 0,
                     Value: 0,
+                    Leaked: 0,
                     FirstLeak: 0
                 },
                 Inev: {
@@ -189,6 +208,7 @@ export default {
                     Income: 0,
                     Gas: 0,
                     Value: 0,
+                    Leaked: 0,
                     FirstLeak: 0
                 }
             }
@@ -202,9 +222,9 @@ export default {
 
             console.log(newGame);
 
-            axios.post('https://leaky-73c95.firebaseio.com/games/', newGame).then((response) => {
+            axios.post('https://leaky-73c95.firebaseio.com/games.json', newGame).then((response) => {
                 console.log(response);
-                // window.location.reload();
+                window.location.reload();
             }).catch((error) => {
                 console.log(error);
             })
